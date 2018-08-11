@@ -7,7 +7,6 @@ const SelectView = function (selectElement) {
 SelectView.prototype.bindEvents = function () {
   PubSub.subscribe('Cities:city-data-ready', (evt) => {
     this.populate(evt.detail)
-    console.log(evt.detail);
   });
 
   this.element.addEventListener('change', (evt) => {
