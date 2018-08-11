@@ -10,3 +10,5 @@ CityView.prototype.bindEvents = function () {
     this.render(evt.detail);
   });
 };
+
+module.exports = CityView;

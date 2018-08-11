@@ -1,3 +1,4 @@
+const Cities = require('./models/cities.js');
 const SelectView = require('./views/select_view.js');
 const CityView = require('./views/city_view.js');
 
@@ -12,5 +13,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const cities = new Cities();
   cities.bindEvents();
-
+  cities.getData();
 });
