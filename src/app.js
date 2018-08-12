@@ -2,7 +2,7 @@ const Cities = require('./models/cities.js');
 const SelectView = require('./views/select_view.js');
 const CityView = require('./views/city_view.js');
 const CityListView = require('./views/city_list_view.js');
-const Continents = require('./models/continents.js');
+
 
 document.addEventListener('DOMContentLoaded', () => {
   const selectElement = document.querySelector('select#continents');
