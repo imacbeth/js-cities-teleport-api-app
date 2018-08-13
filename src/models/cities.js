@@ -1,6 +1,7 @@
 const Request = require('../helpers/request.js');
 const PubSub = require('../helpers/pub_sub.js');
 
+
 const Cities = function () {
   // this.url = url;
   this.citiesData = [];

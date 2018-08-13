@@ -24,14 +24,12 @@ CityListView.prototype.renderCityViews = function (cities) {
   this.cities = cities;
   cities.forEach((city) => {
   this.createCityListItem(city);
-  
   });
 };
 
 CityListView.prototype.createCityListItem = function (city) {
   const cityView = new CityView(this.container, city);
   cityView.createCityItem();
-
 };
 
 module.exports = CityListView;
