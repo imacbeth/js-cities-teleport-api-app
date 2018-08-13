@@ -2,6 +2,7 @@ const Cities = require('./models/cities.js');
 const SelectView = require('./views/select_view.js');
 const CityView = require('./views/city_view.js');
 const CityListView = require('./views/city_list_view.js');
+const CityDetailView = require('./views/city_detail_view.js');
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -13,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const cityListView = new CityListView(cityContainer);
   cityListView.bindEvents();
 
-  const cityImageContainer = document.querySelector('#city');
+  const cityDetailContainer = document.querySelector('#city');
 
   const cities = new Cities();
   cities.bindEvents();

@@ -5,7 +5,7 @@ const Cities = function () {
   // this.url = url;
   this.citiesData = [];
   this.continents = [];
-  this.images = null;
+  this.cityDetails= [];
 };
 
 Cities.prototype.bindEvents = function () {
@@ -14,6 +14,10 @@ Cities.prototype.bindEvents = function () {
     this.publishCitiesByContinent(selectedIndex);
   });
 
+  PubSub.subscribe('CityListView:selected', (event) => {
+    const selectedCityName = event.detail;
+    this.publishCityDetails(selectedCityName);
+  })
 };
 
 Cities.prototype.getData = function () {
@@ -22,8 +26,6 @@ Cities.prototype.getData = function () {
   request.get()
   .then((data) => {
     this.citiesData = data._embedded["ua:item"];
-    console.log(this.citiesData);
-    // PubSub.publish('Cities:city-data-ready', this.citiesData);
     this.publishContinents(data);
   })
   .catch((err) => {
@@ -53,6 +55,20 @@ Cities.prototype.publishCitiesByContinent = function (continentIndex) {
   const foundCities = this.citiesByContinent(continentIndex);
   console.log(foundCities);
   PubSub.publish('Cities:city-data-ready', foundCities);
+};
+
+Cities.prototype.publishCityDetails = function (cityName) {
+  const url = `https://api.teleport.org/api/urban_areas/?embed=ua:item/slug:${cityName}/details/`;
+  const request = new Request(url);
+  request.get()
+  .then((data) => {
+    this.cityDetails = data.categories;
+    PubSub.publish('Cities:city-details', this.cityDetails);
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+
 };
 
 

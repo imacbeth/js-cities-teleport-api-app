@@ -5,12 +5,12 @@ const SelectView = function (selectElement) {
 };
 
 // SelectView.prototype.bindEvents = function () {
-//   PubSub.subscribe('Cities:city-data-ready', (evt) => {
-//     this.populate(evt.detail)
+//   PubSub.subscribe('Cities:city-data-ready', (event) => {
+//     this.populate(event.detail)
 //   });
 //
-//   this.element.addEventListener('change', (evt) => {
-//     const selectedIndex = evt.target.value;
+//   this.element.addEventListener('change', (event) => {
+//     const selectedIndex = event.target.value;
 //     PubSub.publish('SelectView:change', selectedIndex);
 //   })
 // };
@@ -31,12 +31,12 @@ const SelectView = function (selectElement) {
 
 
 SelectView.prototype.bindEvents = function () {
-  PubSub.subscribe('Cities:continents-ready', (evt) => {
-    this.populate(evt.detail)
+  PubSub.subscribe('Cities:continents-ready', (event) => {
+    this.populate(event.detail)
   });
 
-  this.element.addEventListener('change', (evt) => {
-    const selectedIndex = evt.target.value;
+  this.element.addEventListener('change', (event) => {
+    const selectedIndex = event.target.value;
     PubSub.publish('SelectView:change', selectedIndex);
   })
 };

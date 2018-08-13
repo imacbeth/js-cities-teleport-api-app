@@ -4,21 +4,14 @@ const CityView = function (container) {
 
 };
 
-CityView.prototype.createCityDetail = function (city) {
-  const cityDetail = document.createElement('section');
-  cityDetail.classList.add('city-detail');
+CityView.prototype.createCityItem = function (city) {
+  const cityItem = document.createElement('section');
+  cityItem.classList.add('city-detail');
 
   const cityName = this.createTextElement('h2', city.full_name);
-  cityDetail.appendChild(cityName);
+  cityItem.appendChild(cityName);
 
-
-  const continent = this.createTextElement('h3', city.continent);
-  cityDetail.appendChild(continent);
-
-  // const mayor = this.createTextElement('h3', city.mayor)
-  // cityDetail.appendChild(mayor);
-
-  return cityDetail;
+  return cityItem;
 };
 
 
