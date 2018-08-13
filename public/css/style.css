@@ -1,5 +1,17 @@
 
+.background{
+  /* background-color: rgba(240, 216, 228, 0.71); */
+  background-image: url("./images/travel-stamps.jpg");
+  /* opacity: 0.5; */
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
 body{
-  background-color: rgb(197, 227, 240);
+
   font-family: 'Raleway', sans-serif;
+
 }

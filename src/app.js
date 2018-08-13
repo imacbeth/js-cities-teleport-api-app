@@ -14,7 +14,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const cityListView = new CityListView(cityContainer);
   cityListView.bindEvents();
 
-  const cityDetailContainer = document.querySelector('#city');
+  const cityDetailContainer = document.querySelector('.city-details');
+  const cityDetailView = new CityDetailView(cityDetailContainer);
+  cityDetailView.bindEvents();
 
   const cities = new Cities();
   cities.bindEvents();

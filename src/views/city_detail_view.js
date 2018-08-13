@@ -9,7 +9,7 @@ CityDetailView.prototype.bindEvents = function () {
   PubSub.subscribe('Cities:city-details', (event) => {
     this.clearList();
     this.renderCityDetails(event.detail);
-    console.log(event.detail);
+
   });
 };
 
@@ -31,25 +31,31 @@ CityDetailView.prototype.bindEvents = function () {
     this.container.appendChild(categoriesListTitle);
 
     const categoryHeadings = this.createCategoryList(categories)
-    this.container.appendChild(categoryHeadings)
 
+    console.log(this.container);
     return this.container;
   };
 
-//
-//   // CityDetailView.prototype.createCategoryItem = function () {
-//   //
-//   //
-//   //
-//   // };
-//
+
 
   CityDetailView.prototype.createCategoryList = function (categories) {
     categories.forEach((category) => {
-      const categoryHeadings= document.createElement('h4');
-      categoryHeadings.textContent = category.label;
-      list.appendChild(categoryHeadings);
+      const categoryHeadings = document.createElement('h4');
+      categoryHeadings.textContent = `${category.label}:`;
+      this.container.appendChild(categoryHeadings);
     });
   };
 
+
+  CityDetailView.prototype.createCategoryItem = function () {
+
+
+
+  };
+
+  CityDetailView.prototype.createTextElement = function (elementType, text) {
+    const element = document.createElement(elementType);
+    element.textContent = text;
+    return element;
+  };
 module.exports = CityDetailView;

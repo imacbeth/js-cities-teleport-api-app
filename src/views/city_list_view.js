@@ -23,22 +23,15 @@ CityListView.prototype.clearList = function () {
 CityListView.prototype.renderCityViews = function (cities) {
   this.cities = cities;
   cities.forEach((city) => {
-    const cityItem = this.createCityListItem(city);
-    console.log(cityItem);
-    this.container.appendChild(cityItem);
+  this.createCityListItem(city);
+  
   });
 };
 
 CityListView.prototype.createCityListItem = function (city) {
-  const cityView = new CityView();
-  const cityItem = cityView.createCityItem(city);
+  const cityView = new CityView(this.container, city);
+  cityView.createCityItem();
 
-  cityItem.addEventListener('click', (event) => {
-    const selectedCityName = event.target.slug;
-    console.log(cityItem);
-    PubSub.publish('CityListView:selected', selectedCityName);
-  });
-  return cityItem;
 };
 
 module.exports = CityListView;

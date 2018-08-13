@@ -16,7 +16,6 @@ Cities.prototype.bindEvents = function () {
 
   PubSub.subscribe('CityListView:selected', (event) => {
     const selectedCityName = event.detail;
-    console.log(event);
     this.publishCityDetails(selectedCityName);
   })
 };
@@ -57,7 +56,7 @@ Cities.prototype.publishCitiesByContinent = function (continentIndex) {
 };
 
 Cities.prototype.publishCityDetails = function (cityName) {
-  const url = `https://api.teleport.org/api/urban_areas/?embed=ua:item/slug:${cityName}/details/`;
+  const url = `https://api.teleport.org/api/urban_areas/slug:${cityName}/details/`;
   const request = new Request(url);
   request.get()
   .then((data) => {

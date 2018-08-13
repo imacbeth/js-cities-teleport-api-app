@@ -1,19 +1,22 @@
 const PubSub = require('../helpers/pub_sub.js');
 
-const CityView = function (container) {
-
+const CityView = function (container, city) {
+  this.container = container;
+  this.city = city;
 };
 
-CityView.prototype.createCityItem = function (city) {
-  const cityItem = document.createElement('section');
-  cityItem.classList.add('city-detail');
-  cityItem.value = city.slug
-  console.log(city);
+CityView.prototype.createCityItem = function () {
+  this.container.value = this.city.slug;
+  const cityName = this.createTextElement('h3', this.city.full_name);
+  cityName.addEventListener('click', (event) => {
+    const selectedCityName = this.city.slug;
+    PubSub.publish('CityListView:selected', selectedCityName);
+  });
+  this.container.appendChild(cityName);
 
-  const cityName = this.createTextElement('h3', city.full_name);
-  cityItem.appendChild(cityName);
-  console.log(cityItem);
-  return cityItem;
+  const detailsSection = document.createElement('section');
+  detailsSection.classList.add('city-details');
+  this.container.appendChild(detailsSection);
 };
 
 
