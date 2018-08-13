@@ -7,10 +7,12 @@ const CityView = function (container) {
 CityView.prototype.createCityItem = function (city) {
   const cityItem = document.createElement('section');
   cityItem.classList.add('city-detail');
+  cityItem.value = city.slug
+  console.log(city);
 
-  const cityName = this.createTextElement('h2', city.full_name);
+  const cityName = this.createTextElement('h3', city.full_name);
   cityItem.appendChild(cityName);
-
+  console.log(cityItem);
   return cityItem;
 };
 

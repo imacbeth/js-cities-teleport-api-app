@@ -16,6 +16,7 @@ Cities.prototype.bindEvents = function () {
 
   PubSub.subscribe('CityListView:selected', (event) => {
     const selectedCityName = event.detail;
+    console.log(event);
     this.publishCityDetails(selectedCityName);
   })
 };
@@ -47,13 +48,11 @@ Cities.prototype.continentsList = function (cities) {
 
 Cities.prototype.citiesByContinent = function (continentIndex) {
   const selectedContinent = this.continents[continentIndex];
-  console.log(selectedContinent);
   return this.citiesData.filter(city => city.continent === selectedContinent);
 };
 
 Cities.prototype.publishCitiesByContinent = function (continentIndex) {
   const foundCities = this.citiesByContinent(continentIndex);
-  console.log(foundCities);
   PubSub.publish('Cities:city-data-ready', foundCities);
 };
 

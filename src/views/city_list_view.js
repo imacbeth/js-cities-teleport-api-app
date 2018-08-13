@@ -14,12 +14,6 @@ CityListView.prototype.bindEvents = function () {
     console.log(event.detail);
   });
 
-  this.cities.forEach((city) => {
-  city.addEventListener('click', (event) => {
-    const selectedCityName = event.target.slug;
-    PubSub.publish('CityListView:selected', selectedCityName);
-  });
-});
 };
 
 CityListView.prototype.clearList = function () {
@@ -38,6 +32,12 @@ CityListView.prototype.renderCityViews = function (cities) {
 CityListView.prototype.createCityListItem = function (city) {
   const cityView = new CityView();
   const cityItem = cityView.createCityItem(city);
+
+  cityItem.addEventListener('click', (event) => {
+    const selectedCityName = event.target.slug;
+    console.log(cityItem);
+    PubSub.publish('CityListView:selected', selectedCityName);
+  });
   return cityItem;
 };
 
